@@ -6,6 +6,7 @@ import (
 	"os"
 	"log"
 	"fmt"
+	"hexlet-path-size/sizegetters"
 )
 
 func main() {
@@ -13,7 +14,13 @@ func main() {
 		Name: "hexlet-path-size",
 		Usage: "print size of a file or directory",
 		Action: func(context.Context, *cli.Command) error {
-			fmt.Println("Hello friend!")
+			result, err := sizegetters.GetPathSize("./mocks/tmnt.csv", false, false, false)
+
+			if err != nil {
+				return err
+			}
+
+			fmt.Println(result)
 			return nil
 		},
 	}
