@@ -6,8 +6,32 @@ import (
 	"os"
 )
 
+func FormatSize(size int64, isHumanReadable bool) string {
+	if !isHumanReadable {
+		return fmt.Sprintf("%dB", size)
+	}
+
+	const unit = 1024
+	if size < unit {
+		return fmt.Sprintf("%dB", size)
+	}
+
+	suffixes := [...]string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
+	exp := 0
+	divisor := int64(unit)
+
+	for size/divisor >= unit && exp < len(suffixes)-1 {
+		divisor *= unit
+		exp += 1
+	}
+	
+	value := float64(size) / float64(divisor)
+
+	return fmt.Sprintf("%.1f%s", value, suffixes[exp])
+}
+
 func GetPathSize(path string, recursive, human, all bool) (string, error) {
-	if recursive || human || all {
+	if recursive || all {
 		return "WIP", nil
 	}
 
@@ -17,8 +41,7 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 	}
 
 	name := info.Name()
-
-	var totalSize int64 = 0
+	var totalSize int64
 
 	if !info.IsDir() {
 		totalSize = info.Size()
@@ -40,5 +63,5 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 		}
 	}
 
-	return fmt.Sprintf("%dB\t%s", totalSize, name), nil
+	return fmt.Sprintf("%s\t%s", FormatSize(totalSize, human), name), nil
 }
