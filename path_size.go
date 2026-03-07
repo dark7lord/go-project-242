@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func FormatSize(size int64, isHumanReadable bool) string {
@@ -31,7 +32,7 @@ func FormatSize(size int64, isHumanReadable bool) string {
 }
 
 func GetPathSize(path string, recursive, human, all bool) (string, error) {
-	if recursive || all {
+	if recursive {
 		return "WIP", nil
 	}
 
@@ -52,11 +53,20 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 		}
 
 		for _, file := range files {
+
+			fileName := file.Name()
+
+			if !all && strings.HasPrefix(fileName, ".") {
+				continue
+			}
+
 			if !file.IsDir() {
 				fileinfo, err := file.Info()
 				if err != nil {
 					return "", err
 				}
+
+				fmt.Println(file)
 
 				totalSize += fileinfo.Size()
 			}

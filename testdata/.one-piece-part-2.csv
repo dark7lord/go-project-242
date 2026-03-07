@@ -1,0 +1,31 @@
+id,name,role,bounty,devil_fruit,affiliation,crew,first_appearance_episode
+1,Gol D. Roger,Pirate King,5564800000,None,Roger Pirates,Roger Pirates,1
+2,Silvers Rayleigh,First Mate,None,None,Roger Pirates,Roger Pirates,398
+3,Monkey D. Garp,Vice Admiral,None,None,Marines,Marines,68
+4,Sengoku,Fleet Admiral (former),None,None,Marines,Marines,68
+5,Kuzan (Aokiji),Admiral (former),None,Hie Hie no Mi,Marines (former),Marines,225
+6,Borsalino (Kizaru),Admiral,None,Pika Pika no Mi,Marines,Marines,398
+7,Sakazuki (Akainu),Fleet Admiral,None,Magu Magu no Mi,Marines,Marines,225
+8,Bartholomew Kuma,Warlord (former),296000000,Nikyu Nikyu no Mi,Revolutionary Army,Revolutionary Army,45
+9,Jewelry Bonney,Captain,320000000,None,Bonney Pirates,Bonney Pirates,392
+10,Basil Hawkins,Captain,320000000,None,Hawkins Pirates,Hawkins Pirates,392
+11,X Drake,Captain,222000000,None,Drake Pirates (former),Drake Pirates,392
+12,Scratchmen Apoo,Captain,350000000,None,On Air Pirates,On Air Pirates,392
+13,Killer,Combatant,200000000,None,Kid Pirates,Kid Pirates,392
+14,Eustass Kid,Captain,470000000,None,Kid Pirates,Kid Pirates,392
+15,Urouge,Captain,108000000,None,Fallen Monk Pirates,Fallen Monk Pirates,392
+16,Capone Bege,Captain,138000000,Shiro Shiro no Mi,Firetank Pirates,Firetank Pirates,392
+17,Marco,Commander,1374000000,Tori Tori no Mi (Phoenix),Whitebeard Pirates,Whitebeard Pirates,316
+18,Jozu,Commander,None,Kira Kira no Mi,Whitebeard Pirates,Whitebeard Pirates,316
+19,Vista,Commander,None,None,Whitebeard Pirates,Whitebeard Pirates,316
+20,Crocodile,President (former),81000000,Suna Suna no Mi,Baroque Works (former),Baroque Works,77
+21,Dracule Mihawk,Warlord (former),3590000000,None,Cross Guild,Cross Guild,23
+22,Donquixote Doflamingo,King,340000000,Ito Ito no Mi,Donquixote Pirates,Donquixote Pirates,50
+23,Magellan,Chief Warden,None,Doku Doku no Mi,Impel Down,Impel Down,58
+24,Hannyabal,Vice Warden,None,None,Impel Down,Impel Down,58
+25,Emporio Ivankov,Commander,100000000,Horu Horu no Mi,Revolutionary Army,Revolutionary Army,56
+26,Inazuma,Revolutionary,None,Choki Choki no Mi,Revolutionary Army,Revolutionary Army,56
+27,Bellamy,Pirate,195000000,Bane Bane no Mi,Bellamy Pirates,Bellamy Pirates,146
+28,Caesar Clown,Scientist,300000000,Gasu Gasu no Mi,Donquixote Pirates (former),Donquixote Pirates,494
+29,Charlotte Katakuri,Sweet Commander,1057000000,Mochi Mochi no Mi,Big Mom Pirates,Big Mom Pirates,571
+30,Gecko Moria,Warlord (former),320000000,Kage Kage no Mi,Thriller Bark Pirates,Thriller Bark Pirates,146
