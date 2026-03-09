@@ -20,12 +20,18 @@ func main() {
 				Usage:   "human-readable sizes (auto-select unit)",
 			},
 			&cli.BoolFlag{
-				Name: "all",
+				Name:    "all",
 				Aliases: []string{"a"},
-				Usage: "include hidden files and directories",
+				Usage:   "include hidden files and directories",
+			},
+			&cli.BoolFlag{
+				Name:    "recursive",
+				Aliases: []string{"r"},
+				Usage:   "recursive size of directories",
 			},
 		},
 		Action: func(ctx context.Context, cmd *cli.Command) error {
+			recursive := cmd.Bool("recursive")
 			human := cmd.Bool("human")
 			all := cmd.Bool("all")
 
@@ -34,12 +40,12 @@ func main() {
 			}
 			filePath := cmd.Args().Get(0)
 
-			result, err := path_size.GetPathSize(filePath, false, human, all)
+			size, err := path_size.GetPathSize(filePath, recursive, human, all)
 			if err != nil {
-				return fmt.Errorf("Ошибка открытия по пути %s", filePath)
+				return fmt.Errorf("ошибка открытия по пути %s", filePath)
 			}
 
-			fmt.Println(result)
+			fmt.Println(size)
 
 			return nil
 		},
