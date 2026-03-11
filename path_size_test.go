@@ -16,18 +16,18 @@ func TestGetPathSize_Files(t *testing.T) {
 		{
 			name:     "returns file size for tmnt.csv without human readable",
 			path:     "./testdata/tmnt.csv",
-			expected: "670B\ttmnt.csv",
+			expected: "670B",
 		},
 		{
 			name:     "returns file size for one-piece.csv without human readable",
 			path:     "./testdata/one-piece.csv",
-			expected: "1681B\tone-piece.csv",
+			expected: "1681B",
 		},
 		{
 			name:     "returns file size for one-piece.csv in human readable format",
 			path:     "./testdata/one-piece.csv",
 			human:    true,
-			expected: "1.6KB\tone-piece.csv",
+			expected: "1.6KB",
 		},
 	}
 
@@ -53,27 +53,27 @@ func TestGetPathSize_Directories(t *testing.T) {
 			name:      "returns directory size for testdata without recursion",
 			path:      "./testdata",
 			recursive: false,
-			expected:  "2351B\ttestdata",
+			expected:  "2351B",
 		},
 		{
 			name:      "returns directory size for testdata recursively without hidden files",
 			path:      "./testdata",
 			recursive: true,
-			expected:  "4713B\ttestdata",
+			expected:  "4713B",
 		},
 		{
 			name:      "returns directory size for testdata recursively with hidden files",
 			path:      "./testdata",
 			recursive: true,
 			all:       true,
-			expected:  "9252B\ttestdata",
+			expected:  "9252B",
 		},
 		{
 			name:      "returns directory size for testdata recursively in human readable format",
 			path:      "./testdata",
 			recursive: true,
 			human:     true,
-			expected:  "4.6KB\ttestdata",
+			expected:  "4.6KB",
 		},
 	}
 
