@@ -1,7 +1,7 @@
-// Package path_size provides functions for getting the size
+// Package code provides functions for getting the size
 // of files and directories on disk, with the possibility of recursive traversal
 // and formatting the size in a human-readable form.
-package path_size
+package code
 
 import (
 	"fmt"
