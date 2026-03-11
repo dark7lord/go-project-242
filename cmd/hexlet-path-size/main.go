@@ -3,9 +3,9 @@
 package main
 
 import (
+	pathSize "code"
 	"context"
 	"fmt"
-	pathSize "code"
 	"log"
 	"os"
 
