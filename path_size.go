@@ -25,11 +25,11 @@ func FormatSize(bytes int64, isHumanReadable bool) string {
 		suffix = units[i+1]
 	}
 
-	tenths := (mantissa * 10) / base
-	if tenths == 0 {
+	if !isHumanReadable || suffix == "B" {
 		return fmt.Sprintf("%d%s", size, suffix)
 	}
-
+	
+	tenths := (mantissa * 10) / base
 	return fmt.Sprintf("%d.%d%s", size, tenths, suffix)
 }
 
