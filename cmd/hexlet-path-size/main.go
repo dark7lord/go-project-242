@@ -5,7 +5,7 @@ package main
 import (
 	"context"
 	"fmt"
-	pathSize "hexlet-path-size"
+	pathSize "code"
 	"log"
 	"os"
 
