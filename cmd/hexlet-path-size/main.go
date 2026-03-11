@@ -3,7 +3,7 @@
 package main
 
 import (
-	pathSize "code"
+	code "code"
 	"context"
 	"fmt"
 	"log"
@@ -44,7 +44,7 @@ func main() {
 
 			filePath := cmd.Args().Get(0)
 
-			size, err := pathSize.GetPathSize(filePath, recursive, human, all)
+			size, err := code.GetPathSize(filePath, recursive, human, all)
 			if err != nil {
 				return fmt.Errorf("opening error along the %s path", filePath)
 			}
