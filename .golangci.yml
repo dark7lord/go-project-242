@@ -6,3 +6,25 @@ run:
 
 linters:
   default: standard
+  enable:
+    - wsl_v5
+    - nlreturn
+    - gocritic
+    - errcheck
+    - staticcheck
+    - gocyclo
+    - revive
+    - goconst
+    - unparam
+
+  settings:
+    nlreturn:
+      block-size: 3
+    gocritic:
+      enable-all: true
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+    - gofumpt

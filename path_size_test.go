@@ -59,15 +59,15 @@ func TestGetPathSize(t *testing.T) {
 			expected:  "4.6KB\ttestdata",
 		},
 		{
-			name:      "non-existent file",
-			path:      "./testdata/non-existent",
-			wantErr:   true,
+			name:    "non-existent file",
+			path:    "./testdata/non-existent",
+			wantErr: true,
 		},
 		{
-			name:      "file one-piece.csv with human",
-			path:      "./testdata/one-piece.csv",
-			human:     true,
-			expected:  "1.6KB\tone-piece.csv",
+			name:     "file one-piece.csv with human",
+			path:     "./testdata/one-piece.csv",
+			human:    true,
+			expected: "1.6KB\tone-piece.csv",
 		},
 	}
 
