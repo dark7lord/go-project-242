@@ -28,8 +28,9 @@ func FormatSize(bytes int64, isHumanReadable bool) string {
 	if !isHumanReadable || suffix == "B" {
 		return fmt.Sprintf("%d%s", size, suffix)
 	}
-	
+
 	tenths := (mantissa * 10) / base
+
 	return fmt.Sprintf("%d.%d%s", size, tenths, suffix)
 }
 
@@ -93,5 +94,5 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 		totalSize = fileIinfo.Size()
 	}
 
-	return fmt.Sprintf("%s", FormatSize(totalSize, human)), nil
+	return FormatSize(totalSize, human), nil
 }

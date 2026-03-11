@@ -16,6 +16,8 @@ linters:
     - revive
     - goconst
     - unparam
+    - ineffassign
+    - unused
 
   settings:
     nlreturn:
