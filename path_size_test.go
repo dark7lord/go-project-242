@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestGetPathSize_Files(t *testing.T) {
+func TestGetPathSize_File(t *testing.T) {
 	tests := []struct {
 		name     string
 		path     string
@@ -14,20 +14,15 @@ func TestGetPathSize_Files(t *testing.T) {
 		expected string
 	}{
 		{
-			name:     "returns file size for tmnt.csv without human readable",
-			path:     "./testdata/tmnt.csv",
-			expected: "670B",
-		},
-		{
-			name:     "returns file size for one-piece.csv without human readable",
+			name:     "size without flags",
 			path:     "./testdata/one-piece.csv",
 			expected: "1681B",
 		},
 		{
-			name:     "returns file size for one-piece.csv in human readable format",
+			name:     "human readable size",
 			path:     "./testdata/one-piece.csv",
 			human:    true,
-			expected: "1.6KB",
+			expected: "1.6KB\t./testdata/one-piece.csv",
 		},
 	}
 
@@ -40,7 +35,7 @@ func TestGetPathSize_Files(t *testing.T) {
 	}
 }
 
-func TestGetPathSize_Directories(t *testing.T) {
+func TestGetPathSize_Dir(t *testing.T) {
 	tests := []struct {
 		name      string
 		path      string
@@ -50,30 +45,31 @@ func TestGetPathSize_Directories(t *testing.T) {
 		expected  string
 	}{
 		{
-			name:      "returns directory size for testdata without recursion",
+			name:      "size without flags",
 			path:      "./testdata",
 			recursive: false,
 			expected:  "2351B",
 		},
 		{
-			name:      "returns directory size for testdata recursively without hidden files",
+			name:      "size with recursive flag",
 			path:      "./testdata",
 			recursive: true,
 			expected:  "4713B",
 		},
 		{
-			name:      "returns directory size for testdata recursively with hidden files",
+			name:      "size with recursive and hidden flags",
 			path:      "./testdata",
 			recursive: true,
 			all:       true,
 			expected:  "9252B",
 		},
 		{
-			name:      "returns directory size for testdata recursively in human readable format",
+			name:      "size with recursive hidden human flags",
 			path:      "./testdata",
 			recursive: true,
 			human:     true,
-			expected:  "4.6KB",
+			all:       true,
+			expected:  "9.0KB\t./testdata",
 		},
 	}
 
@@ -87,7 +83,7 @@ func TestGetPathSize_Directories(t *testing.T) {
 }
 
 func TestGetPathSize_Errors(t *testing.T) {
-	t.Run("returns an error for a non-existent file", func(t *testing.T) {
+	t.Run("non-existent file", func(t *testing.T) {
 		_, err := GetPathSize("./testdata/non-existent", false, false, false)
 		require.Error(t, err)
 	})
