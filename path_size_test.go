@@ -22,7 +22,7 @@ func TestGetPathSize_File(t *testing.T) {
 			name:     "human readable size",
 			path:     "./testdata/one-piece.csv",
 			human:    true,
-			expected: "1.6KB\t./testdata/one-piece.csv",
+			expected: "1.6KB",
 		},
 	}
 
@@ -69,7 +69,7 @@ func TestGetPathSize_Dir(t *testing.T) {
 			recursive: true,
 			human:     true,
 			all:       true,
-			expected:  "9.0KB\t./testdata",
+			expected:  "9.0KB",
 		},
 	}
 

@@ -74,8 +74,7 @@ func GetDirSize(path string, recursive, all bool) (totalSize int64, err error) {
 	return totalSize, err
 }
 
-// GetPathSize returns the size of a file or directory
-// in the format "<size> or <size>\t<filename> (with the --human flag)".
+// GetPathSize returns the size of a file or directory.
 func GetPathSize(path string, recursive, human, all bool) (string, error) {
 	fileIinfo, err := os.Stat(path)
 	if err != nil {
@@ -93,11 +92,5 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 		totalSize = fileIinfo.Size()
 	}
 
-	strSize := FormatSize(totalSize, human)
-
-	if human {
-		return fmt.Sprintf("%s\t%s", strSize, path), nil
-	}
-
-	return strSize, nil
+	return FormatSize(totalSize, human), nil
 }
