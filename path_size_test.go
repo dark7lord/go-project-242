@@ -97,19 +97,19 @@ func TestFormatSize(t *testing.T) {
 		expected        string
 	}{
 		{
-			name:            "zero bytes, not human",
+			name:            "zero bytes no flags",
 			bytes:           0,
 			isHumanReadable: false,
 			expected:        "0B",
 		},
 		{
-			name:            "512 bytes, human",
+			name:            "512 bytes with human flag",
 			bytes:           512,
 			isHumanReadable: true,
 			expected:        "512B",
 		},
 		{
-			name:            "2048 bytes, human",
+			name:            "2048 bytes with human flag",
 			bytes:           2048,
 			isHumanReadable: true,
 			expected:        "2.0KB",
