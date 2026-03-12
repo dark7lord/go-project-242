@@ -5,7 +5,6 @@ package code
 
 import (
 	"fmt"
-	"math"
 	"os"
 	"path/filepath"
 	"strings"
@@ -24,17 +23,13 @@ func FormatSize(bytes int64, isHumanReadable bool) string {
 
 	for _, unit := range units {
 		if size < base {
-			if size == math.Trunc(size) {
+			if unit == "B" {
 				return fmt.Sprintf("%.0f%s", size, unit)
 			}
 			return fmt.Sprintf("%.1f%s", size, unit)
 		}
 
 		size /= base
-	}
-
-	if size == math.Trunc(size) {
-		return fmt.Sprintf("%.0f%s", size, "ZB")
 	}
 
 	return fmt.Sprintf("%.1f%s", size, "ZB")
