@@ -46,7 +46,7 @@ func main() {
 
 			size, err := code.GetPathSize(filePath, recursive, human, all)
 			if err != nil {
-				return fmt.Errorf("opening error along the %s path", filePath)
+				return err
 			}
 
 			fmt.Println(size)

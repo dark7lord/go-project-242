@@ -14,24 +14,22 @@ import (
 func FormatSize(bytes int64, isHumanReadable bool) string {
 	const base = 1024
 
+	if bytes < base || !isHumanReadable {
+		return fmt.Sprintf("%dB", bytes)
+	}
+
 	units := []string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
-	size := bytes
-	suffix := units[0]
 
-	var mantissa int64
-	for i := 0; isHumanReadable && size >= base && i < len(units)-1; i++ {
-		mantissa = size % base
+	size := float64(bytes)
+	for _, unit := range units {
+		if size < base {
+			return fmt.Sprintf("%.1f%s", size, unit)
+		}
+
 		size /= base
-		suffix = units[i+1]
 	}
 
-	if !isHumanReadable || suffix == "B" {
-		return fmt.Sprintf("%d%s", size, suffix)
-	}
-
-	tenths := (mantissa * 10) / base
-
-	return fmt.Sprintf("%d.%d%s", size, tenths, suffix)
+	return fmt.Sprintf("%.1f%s", size, "ZB")
 }
 
 // GetDirSize returns the total size of the directory,
@@ -76,7 +74,7 @@ func GetDirSize(path string, recursive, all bool) (totalSize int64, err error) {
 	return totalSize, err
 }
 
-// GetPathSize returns the size of a file or directory in the "<size>\t<name>" format.
+// GetPathSize returns the size of a file or directory in the "<size>" format.
 func GetPathSize(path string, recursive, human, all bool) (string, error) {
 	fileIinfo, err := os.Stat(path)
 	if err != nil {

@@ -18,6 +18,7 @@ linters:
     - unparam
     - ineffassign
     - unused
+    - misspell
 
   settings:
     nlreturn:
