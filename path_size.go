@@ -10,29 +10,25 @@ import (
 	"strings"
 )
 
+var units = []string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
+
+const base = 1024
+
 // FormatSize returns the size in human-readable format if isHumanReadable=true.
-func FormatSize(bytes int64, isHumanReadable bool) string {
-	if !isHumanReadable {
-		return fmt.Sprintf("%dB", bytes)
+func FormatSize(size int64, isHumanReadable bool) string {
+	if !isHumanReadable || size < base {
+		return fmt.Sprintf("%dB", size)
 	}
 
-	units := []string{"B", "KB", "MB", "GB", "TB", "PB", "EB"}
-	size := float64(bytes)
+	resultSize := float64(size)
+	index := 0
 
-	const base = 1024
-
-	for _, unit := range units {
-		if size < base {
-			if unit == "B" {
-				return fmt.Sprintf("%.0f%s", size, unit)
-			}
-			return fmt.Sprintf("%.1f%s", size, unit)
-		}
-
-		size /= base
+	for resultSize >= base {
+		resultSize /= base
+		index++
 	}
 
-	return fmt.Sprintf("%.1f%s", size, "ZB")
+	return fmt.Sprintf("%.1f%s", resultSize, units[index])
 }
 
 // GetDirSize returns the total size of the directory,
