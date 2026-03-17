@@ -49,7 +49,7 @@ func main() {
 				return err
 			}
 
-			fmt.Printf("%s\t%s\n", size, filePath)
+			fmt.Println(code.FormatPathSize(filePath, size))
 
 			return nil
 		},

@@ -16,19 +16,28 @@ const base = 1024
 
 // FormatSize returns the size in human-readable format if isHumanReadable=true.
 func FormatSize(size int64, isHumanReadable bool) string {
-	if !isHumanReadable || size < base {
-		return fmt.Sprintf("%dB", size)
+	unit := units[0]
+
+	if !isHumanReadable {
+		return fmt.Sprintf("%d%s", size, unit)
 	}
 
 	resultSize := float64(size)
-	index := 0
 
-	for resultSize >= base {
+	for _, u := range units[1:] {
+		if resultSize < base {
+			break
+		}
+
+		unit = u
 		resultSize /= base
-		index++
 	}
 
-	return fmt.Sprintf("%.1f%s", resultSize, units[index])
+	if unit == units[0] {
+		return fmt.Sprintf("%d%s", int(resultSize), unit)
+	}
+
+	return fmt.Sprintf("%.1f%s", resultSize, unit)
 }
 
 // GetDirSize returns the total size of the directory,
@@ -92,4 +101,9 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 	}
 
 	return FormatSize(totalSize, human), nil
+}
+
+// FormatPathSize formats the output string with the size and path.
+func FormatPathSize(path string, size string) string {
+	return fmt.Sprintf("%s\t%s", size, path)
 }

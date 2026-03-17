@@ -123,3 +123,31 @@ func TestFormatSize(t *testing.T) {
 		})
 	}
 }
+
+func TestFormatPathSize(t *testing.T) {
+	tests := []struct {
+		name     string
+		path     string
+		expected string
+	}{
+		{
+			name:     "file path",
+			path:     "./testdata/one-piece.csv",
+			expected: "1681B\t./testdata/one-piece.csv",
+		},
+		{
+			name:     "directory path",
+			path:     "./testdata",
+			expected: "2351B\t./testdata",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			size, err := GetPathSize(tt.path, false, false, false)
+			actual := FormatPathSize(tt.path, size)
+			require.NoError(t, err)
+			require.Equal(t, tt.expected, actual)
+		})
+	}
+}
