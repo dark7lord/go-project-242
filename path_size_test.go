@@ -146,6 +146,7 @@ func TestFormatPathSize(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			size, err := GetPathSize(tt.path, false, false, false)
 			actual := FormatPathSize(tt.path, size)
+
 			require.NoError(t, err)
 			require.Equal(t, tt.expected, actual)
 		})

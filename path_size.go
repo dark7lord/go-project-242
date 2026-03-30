@@ -104,6 +104,6 @@ func GetPathSize(path string, recursive, human, all bool) (string, error) {
 }
 
 // FormatPathSize formats the output string with the size and path.
-func FormatPathSize(path string, size string) string {
+func FormatPathSize(path, size string) string {
 	return fmt.Sprintf("%s\t%s", size, path)
 }
